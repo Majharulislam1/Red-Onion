@@ -1,0 +1,14 @@
+.active {
+    color   : #ff4565;
+    position: relative;
+}
+
+.active::after {
+    content   : "";
+    position  : absolute;
+    background: #ff4565;
+    left      : 19%;
+    width     : 64%;
+    height    : 3px;
+    top       : 30px;
+}

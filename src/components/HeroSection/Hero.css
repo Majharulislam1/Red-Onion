@@ -1,0 +1,12 @@
+.hero {
+    background-image   : url('../../images/bannerbackground.png');
+    background-size    : cover;
+    background-repeat  : no-repeat;
+    background-position: 50%;
+    height             : 80vh;
+}
+
+.input {
+    position: relative;
+    left    : -85px;
+}
