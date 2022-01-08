@@ -2,10 +2,10 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 
 const FoodCart = (props) => {
-    const { id, img_url, name, price, sub_description } = props.food;
+    const { _id, img_url, name, price, sub_description } = props.food;
     return (
         <div>
-            <Link to='/foodDetails'>
+            <Link to={`/foodDetails/${_id}`}>
                 <div className=' p-4 hover:shadow-lg'>
                     <div className='flex justify-center items-center'>
                         <img src={img_url} width="50%" alt="" />

@@ -12,7 +12,6 @@ const Home = () => {
         <>
             <HeroSection></HeroSection>
             <FoodNavbar></FoodNavbar>
-            <BraceFast></BraceFast>
             <About></About>
             <Footer></Footer>
         </>

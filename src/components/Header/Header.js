@@ -4,8 +4,8 @@ import logo from '../../images/logo2.png';
 
 const Header = () => {
     return (
-        <div className='p-4 bg-white'>
-            <div className='lg:w-4/5 w-full  mx-auto'>
+        <div className=' bg-white w-full border-2 z-50   fixed'>
+            <div className='lg:w-4/5 w-full p-4 mx-auto'>
                 <div className='flex justify-between items-center'>
                     <div className='w-3/6'>
                         <Link to='/'>

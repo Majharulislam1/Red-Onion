@@ -22,16 +22,16 @@ function App() {
       <BrowserRouter>
         <Header></Header>
         <Routes>
-          <Route path='/' element={<Home />} />
-          <Route path='cart' element={<Cart />} />
-          <Route path='login' element={<Login />} />
-          <Route path='registration' element={<Registration />} />
-          <Route path='/' element={<FoodNavbar></FoodNavbar>}>
-            <Route path='bracefast' element={<BraceFast />} />
+          <Route path='/' element={<Home />}>
+            <Route path='/' element={<BraceFast />} />
+            <Route path='breakFast' element={<BraceFast />} />
             <Route path='lunch' element={<Lunch />} />
             <Route path='dinner' element={<Dinner />} />
           </Route>
-          <Route path='/foodDetails' element={<FoodDetails></FoodDetails>}></Route>
+          <Route path='/cart' element={<Cart />} />
+          <Route path='/login' element={<Login />} />
+          <Route path='/registration' element={<Registration />} />
+          <Route path='/foodDetails/:id' element={<FoodDetails></FoodDetails>}></Route>
           <Route path="*" element={<NotFound />} ></Route>
         </Routes>
       </BrowserRouter>
