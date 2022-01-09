@@ -1,8 +1,10 @@
 import React from 'react';
 import { Link, NavLink } from 'react-router-dom';
 import logo from '../../images/logo2.png';
+import useApi from '../ContextApi/useContext';
 
 const Header = () => {
+    const [cart, setCart] = useApi();
     return (
         <div className=' bg-white w-full border-2 z-50   fixed'>
             <div className='lg:w-4/5 w-full p-4 mx-auto'>
@@ -15,7 +17,7 @@ const Header = () => {
                     <div className='w-3/6 flex justify-end'>
                         <Link to="/cart" className='lg:mx-4 mx-2'>
                             <i className="fas fa-cart-arrow-down"></i>
-                            <span>0</span>
+                            <span className='bg-primary text-white px-1 rounded-full '>{cart.length}</span>
                         </Link>
                         <Link to="/login" className='lg:mx-4 mx-2 hover:text-dark text-lightgray'>Login</Link>
                         <Link to="/registration" className='lg:mx-4 mx-2'>

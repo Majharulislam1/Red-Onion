@@ -15,26 +15,29 @@ import Registration from './components/Registration/Registration';
 import Food from './components/Food/Food';
 import NotFound from './components/NotFound/NotFound';
 import FoodDetails from './components/FoodDetails/FoodDetails';
+import Context from './components/ContextApi/Context';
 
 function App() {
   return (
     <>
-      <BrowserRouter>
-        <Header></Header>
-        <Routes>
-          <Route path='/' element={<Home />}>
-            <Route path='/' element={<BraceFast />} />
-            <Route path='breakFast' element={<BraceFast />} />
-            <Route path='lunch' element={<Lunch />} />
-            <Route path='dinner' element={<Dinner />} />
-          </Route>
-          <Route path='/cart' element={<Cart />} />
-          <Route path='/login' element={<Login />} />
-          <Route path='/registration' element={<Registration />} />
-          <Route path='/foodDetails/:id' element={<FoodDetails></FoodDetails>}></Route>
-          <Route path="*" element={<NotFound />} ></Route>
-        </Routes>
-      </BrowserRouter>
+      <Context>
+        <BrowserRouter>
+          <Header></Header>
+          <Routes>
+            <Route path='/' element={<Home />}>
+              <Route path='/' element={<BraceFast />} />
+              <Route path='breakFast' element={<BraceFast />} />
+              <Route path='lunch' element={<Lunch />} />
+              <Route path='dinner' element={<Dinner />} />
+            </Route>
+            <Route path='/cart' element={<Cart />} />
+            <Route path='/login' element={<Login />} />
+            <Route path='/registration' element={<Registration />} />
+            <Route path='/foodDetails/:id' element={<FoodDetails></FoodDetails>}></Route>
+            <Route path="*" element={<NotFound />} ></Route>
+          </Routes>
+        </BrowserRouter>
+      </Context>
     </>
   );
 }
