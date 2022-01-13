@@ -16,6 +16,7 @@ import Food from './components/Food/Food';
 import NotFound from './components/NotFound/NotFound';
 import FoodDetails from './components/FoodDetails/FoodDetails';
 import Context from './components/ContextApi/Context';
+import PrivetRoute from './components/PrivetRoute/PrivetRoute';
 
 function App() {
   return (
@@ -30,7 +31,11 @@ function App() {
               <Route path='lunch' element={<Lunch />} />
               <Route path='dinner' element={<Dinner />} />
             </Route>
-            <Route path='/cart' element={<Cart />} />
+            <Route path='/cart' element={
+              // <PrivetRoute></PrivetRoute>
+              <Cart />
+
+            } />
             <Route path='/login' element={<Login />} />
             <Route path='/registration' element={<Registration />} />
             <Route path='/foodDetails/:id' element={<FoodDetails></FoodDetails>}></Route>

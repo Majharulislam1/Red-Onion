@@ -2,9 +2,15 @@ import React from 'react';
 import { Link, NavLink } from 'react-router-dom';
 import logo from '../../images/logo2.png';
 import useApi from '../ContextApi/useContext';
+import useFirebase from '../Firebase/useFirebase';
 
 const Header = () => {
-    const [cart, setCart] = useApi();
+    const { allCart, allDetails } = useApi();
+    const [cart, setCart] = allCart;
+    const { user, signOutEmail } = allDetails;
+    const handleSignOut = () => {
+        signOutEmail();
+    }
     return (
         <div className=' bg-white w-full border-2 z-50   fixed'>
             <div className='lg:w-4/5 w-full p-4 mx-auto'>
@@ -19,10 +25,16 @@ const Header = () => {
                             <i className="fas fa-cart-arrow-down"></i>
                             <span className='bg-primary text-white px-1 rounded-full '>{cart.length}</span>
                         </Link>
-                        <Link to="/login" className='lg:mx-4 mx-2 hover:text-dark text-lightgray'>Login</Link>
-                        <Link to="/registration" className='lg:mx-4 mx-2'>
-                            <button className='bg-primary hover:bg-danger px-5 text-white  py-1 rounded-full'>Sign Up</button>
-                        </Link>
+                        {
+                            user?.email ? <Link to="/" className='lg:mx-4 mx-2 hover:text-dark text-lightgray'>{user?.displayName}</Link> : <Link to="/login" className='lg:mx-4 mx-2 hover:text-dark text-lightgray'>Login</Link>
+                        }
+                        {
+                            user?.email ? <Link to="/" className='lg:mx-4 mx-2'>
+                                <button onClick={handleSignOut} className='bg-primary hover:bg-danger px-5 text-white  py-1 rounded-full'>Sign Out</button>
+                            </Link> : <Link to="/registration" className='lg:mx-4 mx-2'>
+                                <button className='bg-primary hover:bg-danger px-5 text-white  py-1 rounded-full'>Sign Up</button>
+                            </Link>
+                        }
                     </div>
                 </div>
             </div>

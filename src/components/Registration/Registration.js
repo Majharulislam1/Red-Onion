@@ -1,8 +1,38 @@
-import React from 'react';
-import { Link } from 'react-router-dom';
+import React, { useRef } from 'react';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
 import logo from '../../images/logo2.png';
+import useApi from '../ContextApi/useContext';
+import useFirebase from '../Firebase/useFirebase';
 
 const Registration = () => {
+    let navigate = useNavigate();
+    const { state } = useLocation();
+    const { allCart, allDetails } = useApi();
+    const { signUpEmail, error, setError, user, setUser, setDisplayName } = allDetails;
+
+    const nameRef = useRef();
+    const emailRef = useRef();
+    const passRef = useRef();
+
+    const handleSubmit = (e) => {
+        e.preventDefault();
+        const name = nameRef.current.value;
+        const email = emailRef.current.value;
+        const pass = passRef.current.value;
+
+        signUpEmail(email, pass)
+            .then((result) => {
+                setDisplayName(name);
+                navigate(state?.path || "/cart");
+                setError('')
+            })
+            .catch((error) => {
+                console.log(error.message)
+                setError(error.message)
+            })
+        e.target.reset();
+    }
+
     return (
         <div>
             <div className='pt-20'>
@@ -12,16 +42,17 @@ const Registration = () => {
                             <div>
                                 <img src={logo} width="300px" alt="" />
                             </div>
-                            <form className='mt-6'>
-                                <input type="text" className=' border-2 border-lightgray px-4 py-1 rounded w-full outline-offset-1 outline-primary focus:border-none mb-4' placeholder='Name' />
+                            <form onSubmit={handleSubmit} className='mt-6'>
+                                <input type="text" ref={nameRef} className=' border-2 border-lightgray px-4 py-1 rounded w-full outline-offset-1 outline-primary focus:border-none mb-4' placeholder='Name' />
                                 <br />
-                                <input type="email" className=' border-2 border-lightgray px-4 py-1 rounded w-full outline-offset-1 outline-primary focus:border-none mb-4' placeholder='E-mail' />
+                                <input ref={emailRef} type="email" className=' border-2 border-lightgray px-4 py-1 rounded w-full outline-offset-1 outline-primary focus:border-none mb-4' placeholder='E-mail' />
                                 <br />
-                                <input type="text" className=' border-2 border-lightgray px-4 py-1 rounded w-full outline-offset-1 outline-primary focus:border-none mb-4' placeholder='Password' />
+                                <input ref={passRef} type="password" className=' border-2 border-lightgray px-4 py-1 rounded w-full outline-offset-1 outline-primary focus:border-none mb-4' placeholder='Password' />
                                 <br />
                                 <input className='bg-primary text-white  px-4 py-1 rounded w-full font-bold cursor-pointer mb-4 ' type="submit" value='submit' />
                             </form>
                             <Link to='/login' className='text-primary flex justify-center'>Already have an account</Link>
+                            <p className='text-center text-danger'>{error}</p>
                         </div>
                     </div>
                 </div>

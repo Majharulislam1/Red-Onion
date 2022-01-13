@@ -16,13 +16,16 @@ const FoodDetails = () => {
 
 
 
-    const [cart, setCart] = useApi();
+    const { allCart, allDetails } = useApi();
+    const [cart, setCart] = allCart;
 
     const handleAddToCart = (id, count) => {
         const newCart = { id, count };
+        if (cart.some(items => items.id === id)) {
+            alert("Already added");
+            return;
+        }
         const carts = [...cart, newCart];
-
-
         setCart(carts);
     }
 

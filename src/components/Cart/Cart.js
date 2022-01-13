@@ -4,8 +4,17 @@ import Footer from '../Footer/Footer';
 import useFood from '../hooks/useFood';
 
 const Cart = () => {
-    const [cart] = useApi();
+    const { allCart, allDetails } = useApi();
+    const [cart, setCart] = allCart;
     const [food, setFood] = useFood();
+    let foodCart;
+    for (const id of cart) {
+
+        const fdId = id.id;
+        foodCart = food.filter(fb => fb._id === fdId);
+
+    }
+
     return (
         <>
             <div className='pt-20'>
