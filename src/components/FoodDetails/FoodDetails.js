@@ -20,10 +20,13 @@ const FoodDetails = () => {
 
     const handleAddToCart = (id, count) => {
         const newCart = { id, count };
-        const carts = [...cart, newCart];
+        if(cart.some(item => item.id === id)){
+          alert("Already added")
+            return ;
+        }
 
-
-        setCart(carts);
+        const carts = [...cart,newCart];
+        setCart(carts)   
     }
 
     console.log(cart);
