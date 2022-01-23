@@ -7,7 +7,7 @@ import useFirebase from '../Firebase/useFirebase';
 const Registration = () => {
     let navigate = useNavigate();
     const { state } = useLocation();
-    const { allCart, allDetails } = useApi();
+    const { allDetails } = useApi();
     const { signUpEmail, error, setError, user, setUser, setDisplayName } = allDetails;
 
     const nameRef = useRef();

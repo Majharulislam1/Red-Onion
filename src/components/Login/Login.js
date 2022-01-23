@@ -10,7 +10,7 @@ const Login = () => {
     let navigate = useNavigate();
     const { state } = useLocation();
 
-    const { allCart, allDetails } = useApi();
+    const { allDetails } = useApi();
 
 
 

@@ -32,8 +32,10 @@ function App() {
               <Route path='dinner' element={<Dinner />} />
             </Route>
             <Route path='/cart' element={
-              // <PrivetRoute></PrivetRoute>
-              <Cart />
+              <PrivetRoute>
+                <Cart />
+              </PrivetRoute>
+
 
             } />
             <Route path='/login' element={<Login />} />

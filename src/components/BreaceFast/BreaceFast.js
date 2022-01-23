@@ -11,7 +11,7 @@ const BraceFast = () => {
             <div className='lg:w-4/5 md:w-9/12 w-full mx-auto pt-8' >
                 <div className='grid lg:grid-cols-3 md:grid-cols-2 grid-cols-1 gap-4'>
                     {
-                        braceFast?.map(fd => <FoodCart key={fd?.id} food={fd}>
+                        braceFast?.map(fd => <FoodCart key={fd?._id} food={fd}>
                         </FoodCart>)
                     }
                 </div>

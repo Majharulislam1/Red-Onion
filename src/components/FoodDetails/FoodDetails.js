@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { Link, useParams } from 'react-router-dom';
+import { Link, useNavigate, useParams } from 'react-router-dom';
 import useApi from '../ContextApi/useContext';
 import Footer from '../Footer/Footer';
 import useFood from '../hooks/useFood';
@@ -8,35 +8,51 @@ import useFood from '../hooks/useFood';
 
 
 const FoodDetails = () => {
+    const navigate = useNavigate();
     const { id } = useParams();
     const [food, setFood] = useFood();
     const foodDetails = food.find(fd => fd._id === id);
 
+
     const [count, setCount] = useState(1);
 
+    const useContext = useApi();
 
-
-    const { allCart, allDetails } = useApi();
-    const [cart, setCart] = allCart;
+    const { store, setStore, allDetails } = useContext;
 
     const handleAddToCart = (id, count) => {
-        const newCart = { id, count };
-        if (cart.some(items => items.id === id)) {
-            alert("Already added");
-            return;
+
+
+        let _store = { ...store };
+        if (!_store.items) {
+            _store.items = {};
         }
-        const carts = [...cart, newCart];
-        setCart(carts);
+
+        if (_store.items[id]) {
+            _store.items[id] = count;
+        }
+        else {
+            _store.items[id] = count;
+        }
+
+        setStore(_store);
     }
 
-    console.log(cart);
+
+
+
+
+
+
 
     return (
         <>
             <div>
                 <div className='pt-16'>
                     <div className='w-4/5 mx-auto lg:flex md:flex'>
+
                         <div className='lg:w-2/4 md:w-2/4 w-full p-6'>
+                            <button className='text-lg font-bold py-8' onClick={() => navigate(-1)}>Back</button>
                             <h1 className='lg:text-5xl md:text-5xl text-3xl py-4 text-dark'>{foodDetails?.name} </h1>
                             <p className='py-4'>{foodDetails?.description}</p>
                             <div className='flex items-center'>
