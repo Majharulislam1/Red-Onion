@@ -1,6 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 
+
 const FoodCart = (props) => {
     const { _id, img_url, name, price, sub_description } = props.food;
     return (
@@ -17,6 +18,7 @@ const FoodCart = (props) => {
                     </div>
                 </div>
             </Link>
+
         </div>
     );
 };

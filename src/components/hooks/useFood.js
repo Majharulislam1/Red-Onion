@@ -6,7 +6,7 @@ const useFood = () => {
         fetch("https://pure-lake-44398.herokuapp.com/food")
             .then(res => res.json())
             .then(data => setFood(data))
-    }, [food])
+    }, [])
 
     return [
         food, setFood
