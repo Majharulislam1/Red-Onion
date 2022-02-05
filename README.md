@@ -3,7 +3,7 @@
 Livesite link [Red-Onion](https://red-onion-c30a6.web.app/).
 
 
-####This projet specialty
+#### This projet specialty
 
 1. This project frontend react js and backend node js
 2. It is fast loading website.
@@ -12,7 +12,7 @@ Livesite link [Red-Onion](https://red-onion-c30a6.web.app/).
 5. Firebase authentication
 6. fully responsive
 
-####Technology 
+#### Technology 
 1. React js 
 2. react router dom v6
 3. tailwind 
